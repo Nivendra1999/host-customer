@@ -1,0 +1,31 @@
+
+.form-control{
+    border-radius: 10px;
+}
+.container2{
+    width: 800px;
+    height: 480px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.text1{
+    width: 365px;
+    margin-left: 10px;
+}
+#image{
+    height: 400px;
+    width: 400px;
+}
+.img1{
+    height: 400px;
+    width: 400px;
+}
+.container3{
+    height: 400px;
+    width: 400px;
+}
+.mbtn{
+    background: linear-gradient(45deg, #833AB4, #C13584);
+    color: white;
+    border: none;
+}
+

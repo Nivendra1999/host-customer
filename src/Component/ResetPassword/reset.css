@@ -1,0 +1,25 @@
+.outer{
+}
+.maindiv{
+    height:55%;
+    width:50%;
+}
+input{
+    border-radius: 9px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.b1{
+    margin-left:13vw;
+    margin-top: 2px;
+    background-color:blueviolet;
+    color:aliceblue;
+}
+.b2{
+    margin-top: 2px;
+    margin-right: 13vw;
+    background-color:rgb(133, 37, 117);
+    color:aliceblue;
+}

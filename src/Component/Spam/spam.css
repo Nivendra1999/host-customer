@@ -1,0 +1,24 @@
+.spamDiv{
+    /* background-color: red; */
+    width: 40%;
+    border-radius: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    /* border: 1px solid black; */
+   
+}
+.spamContain{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.spamContainer{
+    display: flex;
+    justify-content: center;
+}
+.spamb{
+    background: linear-gradient(45deg, #833AB4, #C13584);
+    color: white;
+}
