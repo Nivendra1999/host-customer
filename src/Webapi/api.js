@@ -1,8 +1,13 @@
-const url = "http://localhost:3000";
+// const api = "https://mywingsback.onrender.com";
+// const URL: "https://mywingsback.onrender.com";
+// const file: "https://mywingsback.onrender.com/uploads";
 export default{
-    URL : "http://localhost:3000",
-    file:"http://localhost:3000/uploads/",
-    profilepic:"http://localhost:3000/profilephoto/",
+    // URL : "http://localhost:3000",
+    // file:"http://localhost:3000/uploads/",
+    URL: "https://mywingsback.onrender.com",
+    file: "https://mywingsback.onrender.com/uploads",
+    profilepic: "https://mywingsback.onrender.com/profilephoto",
+    // profilepic:"http://localhost:3000/profilephoto/",
     addpost:"/post/uploadPost",
     getcomment:"/post/getComment",
     postcomment:"/post/comment",
