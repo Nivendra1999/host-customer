@@ -33,7 +33,7 @@ export function Home() {
     // do like
     const doLike = async (postId) => {
         const divElement = document.getElementById("div" + postId);
-        let response = await axios.post(api.URL + api.doLike, { postId, friendUserId: user._id });
+        let response = await axios.post(api.doLike, { postId, friendUserId: user._id });
         if (response.data.status) {
             let postIndex = await postList.findIndex((posts) => posts._id == postId);
             const iconElement = divElement.querySelector('i');
@@ -66,7 +66,7 @@ export function Home() {
         if (comment.style.display == "none") {
             comment.style.display = "block";
             try {
-                let response = await axios.post(api.URL + "/post/getComment", { userPostId: postId });
+                let response = await axios.post(api.GET_COMMENT, { userPostId: postId });
                 setPostComment(response.data.result);
             } catch (err) {
                 console.log(err);
@@ -90,7 +90,7 @@ export function Home() {
         else {
             try {
                 setcomment("")
-                let response = await axios.post(api.URL + api.postcomment, { friendUserId: user._id, postId, comment: comment });
+                let response = await axios.post(api.postcomment, { friendUserId: user._id, postId, comment: comment });
                 if (response)
                     toast.success("comment posted")
 
@@ -147,7 +147,7 @@ export function Home() {
 
     //..................................................
     const newpost = async () => {
-        let response = await axios.get("http://localhost:3000/post/getAllPost" + `?page=${page}`);
+        let response = await axios.get(api.GET_ALL_POST + `?page=${page}`);
         let newPostList = response.data.result
         const updatedPostList = [...postList, ...newPostList];
         dispach(setPosts(updatedPostList));

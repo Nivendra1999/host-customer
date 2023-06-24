@@ -7,6 +7,7 @@ import { setToken, setUser } from "../../../redux-conflig/userSlice";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Help } from "../../Modal/Help.modal";
+import api from "../../../Webapi/api";
 // import { socket } from "../../../App";
 function SignIn() {
     const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ function SignIn() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            let response = await axios.post("http://localhost:3000/user/signIn", { usernameOrEmail:email, password });
+            let response = await axios.post(api.USER_SINGIN, { usernameOrEmail:email, password });
             localStorage.setItem("user",JSON.stringify(response.data.user));
             dispatch(setUser(response.data.user));
             dispatch(setToken(response.data.token));

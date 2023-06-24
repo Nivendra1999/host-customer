@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../../../redux-conflig/userSlice";
 import { ToastContainer, toast } from "react-toastify";
+import api from "../../../Webapi/api";
 export default function SignUp() {
     const [name,setName] = useState("");
     const [userName,setUserName] = useState("");
@@ -16,7 +17,7 @@ export default function SignUp() {
     const eventHandler = async (event)=>{
         try{
             event.preventDefault();
-            let response = await axios.post("http://localhost:3000/user/signUp",{name,userName,email,password,contact});
+            let response = await axios.post(api.USER_SINGUP,{name,userName,email,password,contact});
             localStorage.setItem("user",JSON.stringify(response.data.user));
             dispatch(setUser(response.data.user));
             dispatch(setToken(response.data.token));

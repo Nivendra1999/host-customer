@@ -32,7 +32,7 @@ export function Navebar() {
     if (notify.style.display == "none") {
       notify.style.display = "block";
       try {
-        let response = await axios.get(api.URL + api.NOTIFICATION + "/" + user._id);
+        let response = await axios.get(api.NOTIFICATION + "/" + user._id);
         setNotifications(response.data.notification);
       } catch (err) {
         console.log(err);

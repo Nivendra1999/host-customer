@@ -29,7 +29,7 @@ export function FreindProfile() {
         if (comment.style.display == "none") {
             comment.style.display = "block";
             try {
-                let response = await axios.post(api.URL + "/post/getComment", { userPostId: postId });
+                let response = await axios.post(api.GET_COMMENT, { userPostId: postId });
                 setPostComment(response.data.result);
             } catch (err) {
                 console.log(err);
@@ -43,7 +43,7 @@ export function FreindProfile() {
     }
 
     const getAllFollowers = async (userId) => {
-        let response = await axios.get(api.URL + api.GET_USER_FOLLOWERS + userId);
+        let response = await axios.get(api.GET_USER_FOLLOWERS + userId);
         if (!response.data.result.followersUser.length){
             setFollowers("0");
         }
@@ -66,14 +66,14 @@ export function FreindProfile() {
     }
 
     const getAllFollowing = async (userId) => {
-        let response = await axios.get(api.URL + api.GET_USER_FOLLOWING + userId);
+        let response = await axios.get(api.GET_USER_FOLLOWING + userId);
         (!response.data.result)
             ? setFollowing("0")
             : setFollowing(response.data.result.followingsuser.length);
     }
 
     const getUser = async () => {
-        Promise.all([axios.get(api.URL + api.GET_USER_BY_ID + userId), axios.post(api.URL + api.getPostsById, { userId })]).then(result => {
+        Promise.all([axios.get(api.GET_USER_BY_ID + userId), axios.post(api.getPostsById, { userId })]).then(result => {
             setUser(result[0].data.user);
             setPosts(result[1].data.posts);
         }).catch(err => {
@@ -82,7 +82,7 @@ export function FreindProfile() {
     }
 
     const follow = async () => {
-        Promise.all([axios.post(api.URL + api.FOLLOWINGS, { userId: mainUser.user._id, friendUserId: userId }) , axios.post(api.URL+api.FOLLOWER,{userId:userId,friendUserId:mainUser.user._id})])
+        Promise.all([axios.post(api.FOLLOWINGS, { userId: mainUser.user._id, friendUserId: userId }) , axios.post(api.FOLLOWER,{userId:userId,friendUserId:mainUser.user._id})])
         .then(result =>{
             setfreindStatus(true);
             setFollowers((follower*1)+1);
@@ -92,7 +92,7 @@ export function FreindProfile() {
     }
 
     const unFollow = async () => {
-        Promise.all([axios.post(api.URL+api.UNFOLLOWINGS,{ userId: mainUser.user._id, friendUserId: userId }) , axios.post(api.URL+api.UNFOLLOWER,{ userId: userId, friendUserId: mainUser.user._id })])
+        Promise.all([axios.post(api.UNFOLLOWINGS,{ userId: mainUser.user._id, friendUserId: userId }) , axios.post(api.UNFOLLOWER,{ userId: userId, friendUserId: mainUser.user._id })])
         .then(result =>{
             setfreindStatus(false);
             setFollowers((follower*1)-1);

@@ -3,6 +3,7 @@ import axios from "axios";
 import post from '../../poloadicon.png';
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import api from "../../Webapi/api";
 export function AddPostModal() {
     const [file, setfile] = useState("");
     const [caption, setcaption] = useState("");
@@ -46,7 +47,7 @@ export function AddPostModal() {
 
     const submitbutton = async (event) => {
         event.preventDefault();
-        let url = "http://localhost:3000/post/uploadPost";
+        let url = api.UPLOAD_POST;
         const formdata = new FormData();
         formdata.append('file', file);
         formdata.append('date', date);

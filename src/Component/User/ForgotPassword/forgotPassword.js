@@ -16,7 +16,7 @@ export default function ForgotPassword() {
     const navigate = useNavigate();
     const submitEmail = async (email) => {
         try {
-            let response = await axios.post(api.URL + api.FORGOT_PASSWORD, { email: email })
+            let response = await axios.post(api.FORGOT_PASSWORD, { email: email })
             setresponseOtp(response.data.otp)
             setsubmitStatus(true)
             let d = document.getElementById("otpdiv");
@@ -30,7 +30,7 @@ export default function ForgotPassword() {
 
     const resendOtp = async () => {
         try {
-            let response = await axios.post(api.URL + api.FORGOT_PASSWORD, { email: emailinput })
+            let response = await axios.post(api.FORGOT_PASSWORD, { email: emailinput })
             setresponseOtp(response.data.otp)
             setsubmitStatus(true)
             let d = document.getElementById("otpdiv");
