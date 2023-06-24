@@ -10,7 +10,7 @@ export function SearchModal() {
     const Navigate = useNavigate();
     const searchHere = async () => {
         try {
-            let response = await axios.get("http://localhost:3000/user/searchProfile/" + keyword);
+            let response = await axios.get(api.SEAECH_PROFILE + keyword);
             setData(response.data.user);
         }
         catch (err) {
@@ -20,7 +20,7 @@ export function SearchModal() {
 
     const searchByArt = async (value)=>{
         try{
-            let response = await axios.get("http://localhost:3000/user/searchByArt/" + value);
+            let response = await axios.get(api.SEARCH_BY_ART + value);
             setData(response.data.user)
         }
         catch(err){
@@ -36,7 +36,7 @@ export function SearchModal() {
     return <>
         <div className="modal fade" id="searchModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                <div className="modal-content searchModalContent">
+                <div className="modal-content searchModalContents">
                     <div className="modal-header bgcolor">
                         <h4 className="modal-title" id="exampleModalLabel" style={{ color: "#ffffff" }}>Search Your Interest</h4>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

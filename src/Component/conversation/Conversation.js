@@ -12,7 +12,7 @@ export function Conversation({ conversation, currentUser, bool }) {
       const friendId = conversation.members.find((m) => m !== currentUser._id);
       const getUser = async () => {
         try {
-          const res = await axios.get(api.URL + api.GET_USER_BY_ID + friendId);
+          const res = await axios.get(api.GET_USER_BY_ID + friendId);
           setUser(res.data.user);
         } catch (err) {
           console.log(err);

@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const fetchFollower = createAsyncThunk("fetchFollower", async (user) => {
     try {
-        let response = await axios.get(api.URL + api.GET_USER_FOLLOWERS + user);
+        let response = await axios.get(api.GET_USER_FOLLOWERS + user);
         return response.data;
     }
     catch (err) {

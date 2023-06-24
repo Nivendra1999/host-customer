@@ -48,8 +48,8 @@ export default function UpdateDetails() {
     formData.append("_id", user._id);
     
     try {
-      let response = await axios.post(api.URL + api.updateprofile, formData);
-      let updatedUser = await axios.get(api.URL + "/user/searchById/" + user._id);
+      let response = await axios.post(api.updateprofile, formData);
+      let updatedUser = await axios.get(api.SEARCH_BY_ID + user._id);
       console.log(updatedUser)
       toast.success("user Updated");
       dispatch(setUser({ ...user, profilePhoto: updatedUser.data.user.profilePhoto }))

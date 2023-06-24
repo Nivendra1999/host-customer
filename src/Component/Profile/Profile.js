@@ -36,7 +36,7 @@ export function Profile() {
         if (comment.style.display == "none") {
             comment.style.display = "block";
             try {
-                let response = await axios.post(api.URL + "/post/getComment", { userPostId: postId });
+                let response = await axios.post(api.GET_COMMENT, { userPostId: postId });
                 setPostComment(response.data.result);
             } catch (err) {
                 console.log(err);
@@ -50,7 +50,7 @@ export function Profile() {
     }
 
     const getAllFollowing = async (userId) => {
-        let response = await axios.get(api.URL + api.GET_USER_FOLLOWING + userId);
+        let response = await axios.get(api.GET_USER_FOLLOWING + userId);
         (!response.data.result.length)
             ? setFollowing("0")
             : setFollowing(response.data.result[0].followings.length);
@@ -62,7 +62,7 @@ export function Profile() {
         if (modal.style.display == "none") {
             modal.style.display = "block";
             try {
-                let response = await axios.post(api.URL + "/post/getComment", { userPostId: postId });
+                let response = await axios.post(api.GET_COMMENT, { userPostId: postId });
                 setPostComment(response.data.result);
             } catch (err) {
                 console.log(err);
@@ -80,7 +80,7 @@ export function Profile() {
             setUserPostType(value);
         }
         else {
-            let response = await axios.post(api.URL + api.GET_USER_SAVED_POSTS, { userId: user._id })
+            let response = await axios.post(api.GET_USER_SAVED_POSTS, { userId: user._id })
             console.log(response.data.savedPosts)
             setSavedPosts(response.data.savedPosts);
             setUserPostType(value);

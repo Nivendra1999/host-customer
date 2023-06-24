@@ -3,7 +3,7 @@ import api from "../Webapi/api";
 import axios from "axios";
 
 export const fetchPost = createAsyncThunk("fetchPost", async (page) => {
-    let response = await axios.get("http://localhost:3000/post/getAllPost" + `?page=${page}`);
+    let response = await axios.get(api.GET_ALL_POST+ `?page=${page}`);
     return response.data
 })
 

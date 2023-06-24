@@ -33,7 +33,7 @@ export function Chat() {
     const searchByKeyword = async () => {
         try {
             if(keyword){
-                let response = await axios.get("http://localhost:3000/user/searchProfile/" + keyword);
+                let response = await axios.get(api.SEAECH_PROFILE + keyword);
                 setSearchUsers(response.data.user);
             }
             if(keyword === "")
@@ -55,7 +55,7 @@ export function Chat() {
             })
         })
         if(!flag){
-            const response = await axios.post(api.URL + api.CREATE_CONVERSATION,{senderId:user._id,receiverId:freindId});
+            const response = await axios.post(api.CREATE_CONVERSATION,{senderId:user._id,receiverId:freindId});
             setCurrentChat(response.data);
             setConversation([...conversation,response.data]);
         }
@@ -63,7 +63,7 @@ export function Chat() {
 
 
     const getConversation = async () => {
-        const response = await axios.get(api.URL + "/conversation/" + user._id);
+        const response = await axios.get(api.CONVERSATION + user._id);
         setConversation(response.data);
     }
 
@@ -75,7 +75,7 @@ export function Chat() {
             conversationId: currentChat._id
         }
         try {
-            let response = await axios.post(api.URL + "/message", updatedMessage);
+            let response = await axios.post(api.SEND_MESSAGE, updatedMessage);
             setMessage([...message, response.data]);
             setNewMessage("");
         } catch (err) {
@@ -120,7 +120,7 @@ export function Chat() {
     }, [user]);
 
     const getMessages = async () => {
-        const response = await axios.get(api.URL + "/message/" + currentChat?._id);
+        const response = await axios.get(api.MESSAGE + currentChat?._id);
         setMessage(response.data);
         if (currentChat != null) {
             let userId = currentChat.members.find((item) => item!=user._id);

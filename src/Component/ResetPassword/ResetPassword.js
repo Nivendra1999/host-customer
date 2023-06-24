@@ -21,7 +21,7 @@ export default function ResetPassword() {
         }
         else if(newPassword==conformPassword){
            try{
-            let response = await axios.post(api.URL+api.CHANGE_PASSWORD, {userId:user._id,password:newPassword,oldPassword:oldPassword})
+            let response = await axios.post(api.CHANGE_PASSWORD, {userId:user._id,password:newPassword,oldPassword:oldPassword})
             toast.success("password changed")
            }catch(err){
             toast.error("oops! something went wrong")

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "./spam.css";
 import { Navebar } from "../Navbar/Navbar";
+import api from "../../Webapi/api";
 
 export default function Span() {
     const state = useLocation();
@@ -14,7 +15,7 @@ export default function Span() {
 
     const handleSpam = async (event) =>{
         event.preventDefault();
-        let response =await axios.post("http://localhost:3000/user/spam",{userId:user._id,postId,reason})
+        let response =await axios.post(api.SPAM,{userId:user._id,postId,reason})
         toast.success("user spam");
     }
     return <>

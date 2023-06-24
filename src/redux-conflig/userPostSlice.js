@@ -3,7 +3,7 @@ import api from "../Webapi/api";
 import axios from "axios";
 
 export const fetchPostById = createAsyncThunk("fetchPostById",async (userId)=>{
-    let response = await axios.post(api.URL+api.getPostsById,{userId});
+    let response = await axios.post(api.getPostsById,{userId});
     return response.data.posts
 })
 

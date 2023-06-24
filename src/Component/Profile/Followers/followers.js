@@ -18,7 +18,7 @@ export function Follower() {
     }
     const removeFollower = async (userId,index) => {
         let newFollowerList = followerlist?.map((item) => { if (item.friendUserId?._id != userId) return item })
-        Promise.all([axios.post(api.URL + api.UNFOLLOWER, { userId: mainUser.user._id, friendUserId: userId }), axios.post(api.URL + api.UNFOLLOWINGS, { userId: userId, friendUserId: mainUser.user._id })])
+        Promise.all([axios.post(api.UNFOLLOWER, { userId: mainUser.user._id, friendUserId: userId }), axios.post(api.UNFOLLOWINGS, { userId: userId, friendUserId: mainUser.user._id })])
             .then(result => {
                 document.getElementById("searchBox" + index).remove();
                 dispatch(setfollowers(newFollowerList))
