@@ -18,10 +18,15 @@ function SignIn() {
         event.preventDefault();
         try {
             let response = await axios.post(api.USER_SINGIN, { usernameOrEmail:email, password });
+            if(response.data){
             localStorage.setItem("user",JSON.stringify(response.data.user));
             dispatch(setUser(response.data.user));
             dispatch(setToken(response.data.token));
             navigate("/");
+            }
+            else{
+                 toast.error("wrong email password");  
+            }
         }
         catch (err) {
             console.log(err)
